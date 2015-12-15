@@ -4,6 +4,21 @@
 <title></title>
 </head>
 <body>
+    <script>
 
+            //create a reference to the root of your Firebase database
+        var myDataRef = new Firebase('https://mr2fgpadxu0.firebaseio-demo.com/');
+
+        //keypress handler that will fire whenever someone tries to send a message.
+        $('#messageInput').keypress(function (e) {
+            if (e.keyCode == 13) {
+              var name = $('#nameInput').val();
+              var text = $('#messageInput').val();
+              myDataRef.set('User ' + name + ' says ' + text);  //write data using the set() to fb-db using the myDataRef reference
+              $('#messageInput').val('');
+            }
+        });
+
+    </script>
 </body>
 </html>
