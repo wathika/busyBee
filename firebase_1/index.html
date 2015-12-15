@@ -14,10 +14,19 @@
             if (e.keyCode == 13) {
               var name = $('#nameInput').val();
               var text = $('#messageInput').val();
-              myDataRef.set('User ' + name + ' says ' + text);  //write data using the set() to fb-db using the myDataRef reference
+              myDataRef.set({name: name, text: text}});  //write data using the set() to fb-db using the myDataRef reference
               $('#messageInput').val('');
             }
         });
+
+        myDataRef.on('child_added', function(snapshot) {
+            var message = snapshot.val();
+            displayChatMessage(message.name, message.text);
+        });
+        function displayChatMessage(name, text) {
+            $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+            $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+        };
 
     </script>
 </body>
