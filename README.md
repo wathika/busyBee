@@ -1,2 +1,2 @@
 # busyBee
-a frontend project a day
+front-end projects
