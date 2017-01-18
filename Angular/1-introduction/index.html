@@ -3,7 +3,7 @@
 <head>
   <title>An Introduction to Angular (Directives and Data binding))</title>
 </head>
-<body ng-init="customers = [{name:'John Smith', city:'Nairobi'},{name:'John Doe',city:'NY'},{name:'Jane Doe',city:'Mombasa'}]">
+<body ng-controller="simpleCtroller">
   Name:
   <br>
   <input type="text" ng-model="name"> <!--{{ name }}-->
@@ -13,5 +13,15 @@
   </ul>
 
   <script src="scripts/angular.min.js"></script>
+
+  <script>
+    function simpleCtroller ($scope) {
+      $scope.customers = [
+        {name:'John Smith', city:'Nairobi'},
+        {name:'John Doe',city:'NY'},
+        {name:'Jane Doe',city:'Mombasa'}]
+
+    };
+  </script>
 </body>
 </html>
