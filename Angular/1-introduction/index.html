@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+  <title>An Introduction to Angular (Directives and Data binding))</title>
+</head>
+<body ng-init="names = ['John Smith', 'John Doe', 'Jane Doe']">
+  Name:
+  <br>
+  <input type="text" ng-model="name"> {{ name }}
+  <br>
+  <ul>
+    <li ng-repeat="personName in names"> {{ personName }}</li>
+  </ul>
+
+  <script src="scripts/angular.min.js"></script>
+</body>
+</html>
