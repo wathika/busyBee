@@ -31,13 +31,18 @@ $(document).ready(function(){
   $("#getQuote").on("click", function(){
     var html = "";
 
-    var randomIndex = getRandomIndex(0, quotesArray.length);
-    var randomQuote = quotesArray[randomIndex];
-    var keys = Object.keys(randomQuote);
-    keys.forEach(function(key){
-       html += randomQuote[key] + "<br>";
-     });
-    
+    // $.getJSON("https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&callback=",
+    // function(a){
+    //   $(".quote").append(a[0].content + "<span>&mdash;" + a[0].title + "</span>")
+    // });
+
+    $.ajax({
+      url: "/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1",
+      dataType: 'json',
+      success: function(a){
+        $(".quote").append(a[0].content + "<span>&mdash;" + a[0].title + "</span>")
+      }
+    });
 
   $(".quote").html(html);
 
